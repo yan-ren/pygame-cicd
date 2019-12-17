@@ -1,7 +1,11 @@
 language: python
+before_install:
+    - sudo apt-get update -qq
+    - sudo apt-get build-dep -qq python-pygame
+    - sudo apt-get install -qq python-pygame
 # command to install dependencies
 install:
   - pip install -r requirements.txt
 # command to run tests
 script:
-  - pytest
+  - python build.py build

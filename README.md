@@ -5,3 +5,8 @@
 - need to build include fonts audio img
 - pygame.font.SysFont(None, 25) error
 - import need reformat
+
+## CI/CD
+- build only on release branch
+- build executable for linux and windows
+- deploy build on github releases

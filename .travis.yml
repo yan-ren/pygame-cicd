@@ -40,7 +40,7 @@ jobs:
     - choco install python3
     - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
     install:
-    - pip install -r requirements.txt
+    - python -m pip install -r requirements.txt
     script:
     - cd ./racing_car
     - python -c 'import pygame'

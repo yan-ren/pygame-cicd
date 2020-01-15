@@ -9,14 +9,14 @@ jobs:
   - stage: build for linux
     os: linux
     before_install:
-    - sudo apt-get update -qq
+      - sudo apt-get update -qq
     install:
-    - pip install -r requirements.txt
+      - pip install -r requirements.txt
     script:
-    - cd ./racing_car
-    - python -c 'import pygame'
-    - python cx-build.py build
-    - tar -zcf linux-build.tar.gz build
+      - cd ./racing_car
+      - python -c 'import pygame'
+      - python cx-build.py build
+      - tar -zcf linux-build.tar.gz build
     before_deploy:
       - git config --local user.name "yan-ren"
       - git config --local user.email "ryan.ren3@gmail.com"
@@ -37,15 +37,17 @@ jobs:
     os: windows
     language: sh
     before_install:
-    - choco install python3
-    - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
+      - choco install python3
+      - python --version
+      - python -m pip install --upgrade pip
+      - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
     install:
-    - python -m pip install -r requirements.txt
+      - pip3 install -r requirements.txt
     script:
-    - cd ./racing_car
-    - python -c 'import pygame'
-    - python cx-build.py build
-    - 7z a windows-build.zip build
+      - cd ./racing_car
+      - python -c 'import pygame'
+      - python cx-build.py build
+      - 7z a windows-build.zip build
     deploy:
       provider: releases
       api_key:

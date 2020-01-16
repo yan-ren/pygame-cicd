@@ -2,7 +2,7 @@ language: python
 python:
   - '3.7'
 env:
-  - RELEASE_TAG="v0.0.1"
+  - TRAVIS_TAG="v0.0.1"
 branches:
   only:
     - release
@@ -23,7 +23,7 @@ jobs:
     before_deploy:
       - git config --local user.name "yan-ren"
       - git config --local user.email "ryan.ren3@gmail.com"
-      - git tag $RELEASE_TAG
+      - git tag $TRAVIS_TAG
       # - git push origin --tags
     deploy:
       provider: releases
@@ -31,8 +31,8 @@ jobs:
         secure: ApQZA6pCsoYJPmNBZ13dbMm2XWxcUp+CTUm1sLOusMFqK5q4djExC/v3UrXt2xkssPAo7b4lqvkEPPPPake5MXmlso2S3psDB1fdTdqagMnYxbCNsVUUMZESTApr0tyLvn1aXttnSXqFiEART2JddAzSTXZ/Hj++K6GOfscmBKdm+xJ8ysBDgscfwRj0as9074O7lU6pRHEJQHd3Hy0FKjzuqj1JMcIl7nK58Eq900P1k1ksZ27hxos7y3BU9HotCiTEYqph8Grb9CRpOLz034uPWvBfNegb50uz6XSHvWNcNCpmpeRgi1TbrKICj6x7MrTVWAHNlJx9t1QkoGKVwfxBjoikPdD3nPwipN83UdE21PLQJQ1Ubo7cGp4JjUT25x82vV7JfB7WdxMFJcCuttqilD6PNcPP8e+pBBH1A3m79ZHOVOfE4Xh8LQ2wzV/ZXlXoY2hOuEp14lpUtErC1tBIVx5697U+1Z0HRkGeGEgtwzLlBfTsFw1UnNobTsQKkmUDgaClJSXqDGsJErc1eJulzpnJwIEN5ta2mDBIL0iK4dGTqeTvaaezn4rz/cUIlXjm1LTgVXk0AeeO5n7Rro19mJS8k/fVPXh531agwdv6QaprvAqcrj+EeHU0vMTSaNH5gCIlZShdyUHxjSQBVuP1/mY+85spKSZd+tChKAc=
       draft: true
       skip_cleanup: true
+      overwrite: true
       file: linux-build.tar.gz
-      name: ${RELEASE_TAG}
       on:
         branch: release
         tags: false
@@ -57,8 +57,8 @@ jobs:
         secure: ApQZA6pCsoYJPmNBZ13dbMm2XWxcUp+CTUm1sLOusMFqK5q4djExC/v3UrXt2xkssPAo7b4lqvkEPPPPake5MXmlso2S3psDB1fdTdqagMnYxbCNsVUUMZESTApr0tyLvn1aXttnSXqFiEART2JddAzSTXZ/Hj++K6GOfscmBKdm+xJ8ysBDgscfwRj0as9074O7lU6pRHEJQHd3Hy0FKjzuqj1JMcIl7nK58Eq900P1k1ksZ27hxos7y3BU9HotCiTEYqph8Grb9CRpOLz034uPWvBfNegb50uz6XSHvWNcNCpmpeRgi1TbrKICj6x7MrTVWAHNlJx9t1QkoGKVwfxBjoikPdD3nPwipN83UdE21PLQJQ1Ubo7cGp4JjUT25x82vV7JfB7WdxMFJcCuttqilD6PNcPP8e+pBBH1A3m79ZHOVOfE4Xh8LQ2wzV/ZXlXoY2hOuEp14lpUtErC1tBIVx5697U+1Z0HRkGeGEgtwzLlBfTsFw1UnNobTsQKkmUDgaClJSXqDGsJErc1eJulzpnJwIEN5ta2mDBIL0iK4dGTqeTvaaezn4rz/cUIlXjm1LTgVXk0AeeO5n7Rro19mJS8k/fVPXh531agwdv6QaprvAqcrj+EeHU0vMTSaNH5gCIlZShdyUHxjSQBVuP1/mY+85spKSZd+tChKAc=
       draft: true
       skip_cleanup: true
+      overwrite: true
       file: windows-build.zip
-      name: ${RELEASE_TAG}
       on:
         branch: release
         tags: false

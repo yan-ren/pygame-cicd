@@ -1,6 +1,8 @@
 language: python
 python:
   - '3.7'
+env:
+  - RELEASE_TAG="v0.0.1"
 branches:
   only:
     - release
@@ -21,8 +23,7 @@ jobs:
     before_deploy:
       - git config --local user.name "yan-ren"
       - git config --local user.email "ryan.ren3@gmail.com"
-      - export TRAVIS_TAG="v0.0.1"
-      - git tag $TRAVIS_TAG
+      - git tag $RELEASE_TAG
       # - git push origin --tags
     deploy:
       provider: releases
@@ -31,7 +32,7 @@ jobs:
       draft: true
       skip_cleanup: true
       file: linux-build.tar.gz
-      name: ${TRAVIS_TAG}
+      name: ${RELEASE_TAG}
       on:
         branch: release
         tags: false
@@ -57,7 +58,7 @@ jobs:
       draft: true
       skip_cleanup: true
       file: windows-build.zip
-      name: ${TRAVIS_TAG}
+      name: ${RELEASE_TAG}
       on:
         branch: release
         tags: false

@@ -37,7 +37,7 @@ jobs:
     os: windows
     language: sh
     before_install:
-      - choco install python
+      - choco install python --version 3.7.5
       - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
       - python --version
     install:

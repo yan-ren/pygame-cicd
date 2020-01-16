@@ -23,7 +23,7 @@ jobs:
       - git config --local user.email "ryan.ren3@gmail.com"
       - export TRAVIS_TAG="v0.0.1"
       - git tag $TRAVIS_TAG
-      - git push origin --tags
+      # - git push origin --tags
     deploy:
       provider: releases
       api_key:

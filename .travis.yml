@@ -31,6 +31,11 @@ jobs:
       skip_cleanup: true
       file: linux-build.tar.gz
       name: ${TRAVIS_TAG}
+      on:
+        branches:
+          only:
+            - release
+            - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
       # on:
       #   tags: true
 
@@ -56,5 +61,10 @@ jobs:
       skip_cleanup: true
       file: windows-build.zip
       name: ${TRAVIS_TAG}
+      on:
+        branches:
+          only:
+            - release
+            - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
       # on:
       #   tags: true

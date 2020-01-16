@@ -31,8 +31,8 @@ jobs:
       skip_cleanup: true
       file: linux-build.tar.gz
       name: ${TRAVIS_TAG}
-      on:
-        tags: true
+      # on:
+      #   tags: true
 
   - stage: build for windows
     os: windows
@@ -56,5 +56,5 @@ jobs:
       skip_cleanup: true
       file: windows-build.zip
       name: ${TRAVIS_TAG}
-      on:
-        tags: true
+      # on:
+      #   tags: true

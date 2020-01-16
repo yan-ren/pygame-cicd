@@ -1,9 +1,10 @@
 language: python
 python:
-- '3.7'
+  - '3.7'
 branches:
   only:
-  - release
+    - release
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 jobs:
   include:
   - stage: build for linux
@@ -20,7 +21,7 @@ jobs:
     before_deploy:
       - git config --local user.name "yan-ren"
       - git config --local user.email "ryan.ren3@gmail.com"
-      - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+      - export TRAVIS_TAG="v0.0.1"
       - git tag $TRAVIS_TAG
     deploy:
       provider: releases

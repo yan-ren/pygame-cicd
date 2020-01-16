@@ -32,11 +32,11 @@ jobs:
       draft: true
       skip_cleanup: true
       overwrite: true
+      tag_name: $TRAVIS_TAG
       name: $TRAVIS_TAG
       file: linux-build.tar.gz
       on:
         branch: release
-        tags: false
 
   - stage: build for windows
     os: windows
@@ -59,8 +59,8 @@ jobs:
       draft: true
       skip_cleanup: true
       overwrite: true
+      tag_name: $TRAVIS_TAG
       name: $TRAVIS_TAG
       file: windows-build.zip
       on:
         branch: release
-        tags: false

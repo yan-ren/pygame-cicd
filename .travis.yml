@@ -23,6 +23,7 @@ jobs:
       - git config --local user.email "ryan.ren3@gmail.com"
       - export TRAVIS_TAG="v0.0.1"
       - git tag $TRAVIS_TAG
+      - git push origin --tags
     deploy:
       provider: releases
       api_key:
@@ -36,8 +37,7 @@ jobs:
           only:
             - release
             - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-      # on:
-      #   tags: true
+          tags: false
 
   - stage: build for windows
     os: windows
@@ -66,5 +66,4 @@ jobs:
           only:
             - release
             - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-      # on:
-      #   tags: true
+          tags: false

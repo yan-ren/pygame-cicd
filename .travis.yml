@@ -37,12 +37,11 @@ jobs:
     os: windows
     language: sh
     before_install:
-      - choco install python3
-      - python --version
-      - python -m pip install --upgrade pip
+      - choco install python
       - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
+      - python --version
     install:
-      - pip3 install -r requirements.txt
+      -  python -m pip install -r requirements.txt
     script:
       - cd ./racing_car
       - python -c 'import pygame'

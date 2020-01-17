@@ -3,5 +3,5 @@
 - export PROJECT=$release
 - a="projects_${PROJECT}_version"
 - export TRAVIS_TAG=${!a}
-- echo $PROJECT
-- echo $TRAVIS_TAG
+- env $PROJECT
+- env $TRAVIS_TAG

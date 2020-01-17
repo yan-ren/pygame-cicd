@@ -2,17 +2,11 @@ branches:
   only:
     - release
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+env:
+  - PROJECT=racing_car
+  - TRAVIS_TAG=v0.0.1
 jobs:
   include:
-  - stage: release setup
-    script:
-      - source ./yaml_parse.sh
-      - eval $(YamlParser "./deployment_values.yaml")
-      - export PROJECT=$release
-      - a="projects_${PROJECT}_version"
-      - export TRAVIS_TAG=${!a}
-      - env PROJECT $PROJECT --pulbic
-      - env TRAVIS_TAG $TRAVIS_TAG --public
   - stage: linux build
     os: linux
     python:

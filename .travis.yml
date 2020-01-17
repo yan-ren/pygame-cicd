@@ -1,22 +1,27 @@
-language: python
-python:
-  - '3.7'
-env:
-  - TRAVIS_TAG="v0.0.1"
 branches:
   only:
     - release
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+script:
+  - source ./yaml_parse.sh
+  - eval $(YamlParser "./deployment_values.yaml")
+  - export PROJECT=$release
+  - a="projects_${PROJECT}_version"
+  - export TRAVIS_TAG=${!a}
+  - echo $PROJECT
+  - echo $TRAVIS_TAG
 jobs:
   include:
-  - stage: build for linux
+  - stage: linux build
     os: linux
+    python:
+      - '3.7'
     before_install:
       - sudo apt-get update -qq
     install:
-      - pip install -r requirements.txt
+      - pip install -r ./$PROJECT/requirements.txt
     script:
-      - cd ./racing_car
+      - cd ./$PROJECT
       - python -c 'import pygame'
       - python cx-build.py build
       - tar -zcf linux-build.tar.gz build
@@ -38,7 +43,7 @@ jobs:
       on:
         branch: release
 
-  - stage: build for windows
+  - stage: windows build
     os: windows
     language: sh
     before_install:
@@ -46,9 +51,9 @@ jobs:
       - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
       - python --version
     install:
-      -  python -m pip install -r requirements.txt
+      -  python -m pip install -r ./$PROJECT/requirements.txt
     script:
-      - cd ./racing_car
+      - cd ./$PROJECT
       - python -c 'import pygame'
       - python cx-build.py build
       - 7z a windows-build.zip build

@@ -1,0 +1,6 @@
+release: "racing_car"
+projects:
+  racing_car:
+    version: "v0.0.1"
+  new_game:
+    version: "v0.0.0"

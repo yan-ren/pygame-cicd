@@ -1,0 +1,7 @@
+- source ./yaml_parse.sh
+- eval $(YamlParser "./deployment_values.yaml")
+- export PROJECT=$release
+- a="projects_${PROJECT}_version"
+- export TRAVIS_TAG=${!a}
+- env $PROJECT
+- env $TRAVIS_TAG

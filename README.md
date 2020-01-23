@@ -15,3 +15,5 @@
 ## Reference
 - Creating single release with multiple build artifacts on github
     - https://github.com/travis-ci/travis-ci/issues/10230
+- Auto tag build for github release
+    - https://stackoverflow.com/questions/28217556/travis-ci-auto-tag-build-for-github-release
